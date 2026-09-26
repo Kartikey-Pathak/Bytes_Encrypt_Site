@@ -722,169 +722,107 @@ export default function Home() {
         )}
       </header>
 
-      {/* =====================================================
-          HERO
-      ====================================================== */}
+     {/* =====================================================
+    HERO
+====================================================== */}
 
-      <section className="relative min-h-screen overflow-hidden pt-[76px]">
-        <BackgroundRippleEffect />
+<section className="relative min-h-screen overflow-hidden pt-[76px]">
+  {/* Background ripple — must receive pointer events */}
+  <div className="absolute inset-0 z-1 pointer-events-auto">
+    <BackgroundRippleEffect />
+  </div>
 
-        <main className="flex items-center justify-center">
-          <section className="relative z-0 min-h-screen w-fit overflow-hidden pt-[76px]">
-            {/* Hero content */}
+  {/* Hero content */}
+  <main className="relative z-10 flex min-h-[calc(100vh-76px)] items-center justify-center pointer-events-none">
+    <div className="relative mt-10 flex h-full w-fit items-center justify-center px-6">
+      <div className="flex max-w-5xl flex-col items-center text-center">
 
-            <div className="relative z-10 mt-10 flex h-full items-center justify-center px-6">
-              <div className="flex max-w-5xl flex-col items-center text-center">
-                {/* Main heading */}
+        {/* Main heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="pointer-events-none flex flex-col items-center justify-center gap-2 text-center"
+        >
+          <h1 className="text-5xl font-semibold tracking-[-0.05em] text-white sm:text-6xl md:text-7xl lg:text-8xl">
+            Secure every
+          </h1>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.1 }}
-                  className="flex flex-col items-center justify-center gap-2 text-center"
-                >
-                  <h1 className="text-5xl font-semibold tracking-[-0.05em] text-white sm:text-6xl md:text-7xl lg:text-8xl">
-                    Secure every
-                  </h1>
+          <LayoutTextFlip
+            text=""
+            words={[
+              "Application.",
+              "Network.",
+              "Cloud.",
+              "People.",
+            ]}
+          />
+        </motion.div>
 
-                  <LayoutTextFlip
-                    text=""
-                    words={[
-                      "Application.",
-                      "Network.",
-                      "Cloud.",
-                      "People.",
-                    ]}
-                  />
-                </motion.div>
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="pointer-events-none mt-8 max-w-2xl text-base leading-7 text-white/55 sm:text-lg"
+        >
+          BytesEncrypt Technologies is an offensive security and assurance
+          partner. We test your applications, networks, cloud and people —
+          then tell you exactly what to fix.
+        </motion.p>
 
-                {/* Description */}
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.45 }}
+          className="pointer-events-auto mt-9 flex flex-wrap items-center justify-center gap-3"
+        >
+          <NoiseBackground
+            containerClassName="mx-auto w-fit rounded-full p-2"
+            gradientColors={[
+              "rgb(255, 100, 150)",
+              "rgb(100, 150, 255)",
+              "rgb(255, 200, 100)",
+            ]}
+          >
+            <a
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center gap-2 rounded-full bg-transparent px-5 py-3 text-sm font-semibold text-white transition-all duration-100 hover:bg-white/10 active:scale-[0.98]"
+            >
+              Request an assessment
+              <ArrowUpRight size={15} />
+            </a>
+          </NoiseBackground>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 25 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.3 }}
-                  className="mt-8 max-w-2xl text-base leading-7 text-white/55 sm:text-lg"
-                >
-                  BytesEncrypt Technologies is an offensive security and assurance
-                  partner. We test your applications, networks, cloud and people —
-                  then tell you exactly what to fix.
-                </motion.p>
+          <MagneticButton>
+            <a
+              href="#solutions"
+              onClick={() => setMobileOpen(false)}
+              className="flex cursor-pointer items-center gap-2 rounded-full bg-black/10 px-8 py-5 text-sm font-semibold text-white ring-1 ring-white/20 ring-inset backdrop-blur-3xl transition-transform duration-150 hover:from-neutral-700 hover:to-neutral-900 active:scale-[0.98]"
+            >
+              Explore solutions
+              <ArrowUpRight size={15} />
+            </a>
+          </MagneticButton>
+        </motion.div>
 
-                {/* CTA */}
+        {/* Bottom signal */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="pointer-events-none mt-14 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-white/30"
+        >
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#b7ff62]" />
+          Live security monitoring
+        </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.45 }}
-                  className="mt-9 flex flex-wrap items-center justify-center gap-3"
-                >
-                  <NoiseBackground
-                    containerClassName="mx-auto w-fit rounded-full p-2"
-                    gradientColors={[
-                      "rgb(255, 100, 150)",
-                      "rgb(100, 150, 255)",
-                      "rgb(255, 200, 100)",
-                    ]}
-                  >
-                    <a
-                      href="#contact"
-                      onClick={() => setMobileOpen(false)}
-                      className="flex items-center gap-2 rounded-full bg-transparent px-5 py-3 text-sm font-semibold text-white transition-all duration-100 hover:bg-white/10 active:scale-[0.98]"
-                    >
-                      Request an assessment
-
-                      <ArrowUpRight size={15} />
-                    </a>
-                  </NoiseBackground>
-
-                  <MagneticButton>
-                    <a
-                      href="#solutions"
-                      onClick={() => setMobileOpen(false)}
-                      className="flex cursor-pointer items-center gap-2 rounded-full bg-black/10 px-8 py-5 text-sm font-semibold text-white ring-1 ring-white/20 ring-inset backdrop-blur-3xl transition-transform duration-150 hover:from-neutral-700 hover:to-neutral-900 active:scale-[0.98]"
-                    >
-                      Explore solutions
-                      <ArrowUpRight size={15} />
-                    </a>
-                  </MagneticButton>
-                </motion.div>
-
-                {/* Bottom signal */}
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.8 }}
-                  className="mt-14 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-white/30"
-                >
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#b7ff62]" />
-                  Live security monitoring
-                </motion.div>
-              </div>
-            </div>
-          </section>
-        </main>
-      </section>
-
-      {/* =====================================================
-          TRUST STRIP
-      ====================================================== */}
-
-      <section className="border-b border-white/[0.06] bg-[#0b0e0c]">
-        <div className="mx-auto grid max-w-[1400px] gap-8 px-5 py-10 sm:px-8 md:grid-cols-3 lg:px-10">
-          <div className="flex items-start gap-4">
-            <Zap
-              size={18}
-              className="mt-1 shrink-0 text-[#b7ff62]"
-            />
-
-            <div>
-              <div className="text-sm font-medium">
-                Signal over scanner output
-              </div>
-
-              <p className="mt-1 text-xs leading-5 text-white/35">
-                Manual testing focused on real attack paths.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-4">
-            <LockKeyhole
-              size={18}
-              className="mt-1 shrink-0 text-[#b7ff62]"
-            />
-
-            <div>
-              <div className="text-sm font-medium">
-                Security across the surface
-              </div>
-
-              <p className="mt-1 text-xs leading-5 text-white/35">
-                Apps, infrastructure, cloud and people.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-4">
-            <Check
-              size={18}
-              className="mt-1 shrink-0 text-[#b7ff62]"
-            />
-
-            <div>
-              <div className="text-sm font-medium">
-                Fixes verified, not assumed
-              </div>
-
-              <p className="mt-1 text-xs leading-5 text-white/35">
-                Retesting is part of the engagement.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
+    </div>
+  </main>
+</section>
 
       {/* =====================================================
           SOLUTIONS
@@ -1376,7 +1314,7 @@ export default function Home() {
                 height={36}
                 className="relative h-9 w-9 object-contain"
               />
-            
+
 
               <div>
                 <div className="text-sm font-semibold">
